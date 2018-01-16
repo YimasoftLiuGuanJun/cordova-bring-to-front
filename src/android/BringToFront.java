@@ -25,6 +25,8 @@ public class BringToFront extends CordovaPlugin {
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
     Log.d("Bring", "action is:" + action);
+    Log.e("jumpStartInterface","Test"));
+    jumpStartInterface();
     if (action.equals("bringToFront")) {
       Log.d("Bring", "I see you baby");
       Intent notificationIntent = new Intent(cordova.getActivity(), cordova.getActivity().getClass());
