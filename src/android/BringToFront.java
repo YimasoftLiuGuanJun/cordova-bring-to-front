@@ -17,11 +17,15 @@ import android.os.Build;
 import android.provider.Settings;
 import android.util.Log;
 
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
 
 /**
  * This class echoes a string called from JavaScript.
  */
 public class BringToFront extends CordovaPlugin {
+  OnePixelReceiver mOnepxReceiver;
+  
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
     Log.d("Bring", "action is:" + action);
@@ -30,6 +34,10 @@ public class BringToFront extends CordovaPlugin {
     if (action.equals("GotoAutoStartPage")){
        jumpStartInterface();
        return true;
+    }else if(action.equals("StartJobServers")){
+      StartJobServer();
+    }else if(action.equals("OnePixelToKeepAlive")){
+      registerScnOnAndOffBroadcast();
     }
     else if (action.equals("bringToFront")) {
       Log.d("Bring", "I see you baby");
@@ -47,6 +55,29 @@ public class BringToFront extends CordovaPlugin {
       return true;
     }
     return false;
+  }
+  
+  //注册监听屏幕的广播
+  public void registerScnOnAndOffBroadcast(){
+        mOnepxReceiver = new OnePixelReceiver();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("android.intent.action.SCREEN_OFF");
+        intentFilter.addAction("android.intent.action.SCREEN_ON");
+        intentFilter.addAction("android.intent.action.USER_PRESENT");
+        registerReceiver(mOnepxReceiver, intentFilter);
+  }
+  
+  
+  public void StartJobServer(){
+     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+              JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+              JobInfo jobInfo = new JobInfo.Builder(1, new ComponentName(getPackageName(), MyJobService.class.getName()))
+                      .setPeriodic(10000)
+                      .setRequiredNetworkType(JobInfo.NETWORK_TYPE_NONE)
+                      .setPersisted(true)
+                      .build();
+              jobScheduler.schedule(jobInfo);
+      }
   }
   
       /**
