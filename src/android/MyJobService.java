@@ -1,4 +1,4 @@
-package com.yima.testnotification;
+package in.lucasdup.bringtofront;
 
 import android.app.ActivityManager;
 import android.app.job.JobParameters;
@@ -36,8 +36,8 @@ public class MyJobService extends JobService {
             Log.e("MyJobService", "JobServer---启动服务");
             //启动一个服务
             if(!isServiceWork(getApplicationContext(),"com.yima.testnotification.LocalCastielService")){
-                Intent i = new Intent(getApplicationContext(), LocalCastielService.class);
-                startService(i);
+               // Intent i = new Intent(getApplicationContext(), LocalCastielService.class);
+               // startService(i);
                 Log.e("MyJobService", "开始启动服务");
             }else {
                 Log.e("MyJobService", "服务已启动");
