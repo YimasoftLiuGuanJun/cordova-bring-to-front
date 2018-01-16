@@ -25,28 +25,42 @@
         </config-file> -->
 		
 	<config-file target="AndroidManifest.xml" parent="/manifest/application">
-<!--             <service android:name="de.appplant.cordova.plugin.background.ForegroundService" /> -->
+	
+		<activity
+		    android:name="in.lucasdup.bringtofront.OnePiexlActivity"
+		    android:screenOrientation="portrait">
+		</activity>
 		
 		<!--JobServer-->
 		<service
 		    android:name="in.lucasdup.bringtofront.MyJobService"
 		    android:enabled="true"
 		    android:exported="true"
-		    android:permission="android.permission.BIND_JOB_SERVICE"></service>
+		    android:permission="android.permission.BIND_JOB_SERVICE">
+		</service>
 		
-		        <!-- 开机自启动广播接受 -->
-        	<receiver android:name=".AutoStartBroadcastReceiver" >
+		 <!-- 开机自启动广播接受 -->
+        	<receiver android:name="in.lucasdup.bringtofront.AutoStartBroadcastReceiver" >
             		<intent-filter>
                 		<action android:name="android.intent.action.BOOT_COMPLETED" />
                 		<category android:name="android.intent.category.HOME"/>
             		</intent-filter>
         	</receiver>
+		
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
-	  <!--开机启动权限-->
-  	  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+		  <!--开机启动权限-->
+		  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
         </config-file>
+		
+	<source-file
+            src="src/android/MyJobService.java"
+            target-dir="src/in/lucasdup/bringtofront" />
+		
+	<source-file
+            src="src/android/OnePiexlActivity.java"
+            target-dir="src/in/lucasdup/bringtofront" />
 		
 	</platform>
 </plugin>
