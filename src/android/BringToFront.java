@@ -24,7 +24,7 @@ import android.app.job.JobScheduler;
  * This class echoes a string called from JavaScript.
  */
 public class BringToFront extends CordovaPlugin {
-  OnePixelReceiver mOnepxReceiver;
+  public OnePixelReceiver mOnepxReceiver;
   
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
