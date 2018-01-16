@@ -34,14 +34,17 @@ public class MyJobService extends JobService {
             startActivity(intent);
             */
             Log.e("MyJobService", "JobServer---启动服务");
-            //启动一个服务
-            if(!isServiceWork(getApplicationContext(),"com.yima.testnotification.LocalCastielService")){
-               // Intent i = new Intent(getApplicationContext(), LocalCastielService.class);
-               // startService(i);
-                Log.e("MyJobService", "开始启动服务");
-            }else {
-                Log.e("MyJobService", "服务已启动");
-            }
+            
+            Toast.makeText(MyJobService.this,"MyJobService》》》》》》啥都没干", Toast.LENGTH_SHORT).show();
+            
+//             //启动一个服务
+//             if(!isServiceWork(getApplicationContext(),"com.yima.testnotification.LocalCastielService")){
+//                // Intent i = new Intent(getApplicationContext(), LocalCastielService.class);
+//                // startService(i);
+//                 Log.e("MyJobService", "开始启动服务");
+//             }else {
+//                 Log.e("MyJobService", "服务已启动");
+//             }
             return true;
         }
     });
