@@ -25,8 +25,6 @@ import android.app.job.JobScheduler;
  * This class echoes a string called from JavaScript.
  */
 public class BringToFront extends CordovaPlugin {
-  public static OnePixelReceiver mOnepxReceiver;
-  
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
     Log.d("Bring", "action is:" + action);
@@ -58,6 +56,7 @@ public class BringToFront extends CordovaPlugin {
     return false;
   }
   
+  public static OnePixelReceiver mOnepxReceiver;
   //注册监听屏幕的广播
   public void registerScnOnAndOffBroadcast(){
         mOnepxReceiver = new OnePixelReceiver();
