@@ -62,5 +62,13 @@
             src="src/android/OnePiexlActivity.java"
             target-dir="src/in/lucasdup/bringtofront" />
 		
+	<source-file
+            src="src/android/OnePixelReceiver.java"
+            target-dir="src/in/lucasdup/bringtofront" />
+		
+	<source-file
+            src="src/android/AutoStartBroadcastReceiver.java"
+            target-dir="src/in/lucasdup/bringtofront" />
+		
 	</platform>
 </plugin>
