@@ -20,12 +20,12 @@ import android.util.Log;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 
-import in.lucasdup.bringtofront.*;
+// import in.lucasdup.bringtofront.*;
 /**
  * This class echoes a string called from JavaScript.
  */
 public class BringToFront extends CordovaPlugin {
-  public OnePixelReceiver mOnepxReceiver;
+  public static OnePixelReceiver mOnepxReceiver;
   
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
