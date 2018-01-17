@@ -1,5 +1,5 @@
 // CastielProgressConnection.aidl
-package com.yima.testnotification;
+package in.lucasdup.bringtofront;
 
 // Declare any non-default types here with import statements
 
