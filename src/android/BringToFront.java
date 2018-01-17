@@ -66,13 +66,13 @@ public class BringToFront extends CordovaPlugin {
         intentFilter.addAction("android.intent.action.SCREEN_OFF");
         intentFilter.addAction("android.intent.action.SCREEN_ON");
         intentFilter.addAction("android.intent.action.USER_PRESENT");
-        registerReceiver(mOnepxReceiver, intentFilter);
+        cordova.getActivity().registerReceiver(mOnepxReceiver, intentFilter);
   }
   
   
   public void StartJobServer(){
      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-              JobScheduler jobScheduler = (JobScheduler) getSystemService("jobscheduler");
+              JobScheduler jobScheduler = (JobScheduler) cordova.getActivity().getSystemService("jobscheduler");
               JobInfo jobInfo = new JobInfo.Builder(1, new ComponentName(cordova.getActivity().getPackageName(), MyJobService.class.getName()))
                       .setPeriodic(10000)
                       .setRequiredNetworkType(JobInfo.NETWORK_TYPE_NONE)
