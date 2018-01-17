@@ -1,4 +1,4 @@
-package com.yima.testnotification;
+package in.lucasdup.bringtofront;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -19,12 +19,6 @@ import android.widget.Toast;
 import java.util.Timer;
 import java.util.TimerTask;
 
-/**
- *
- * @ClassName: RemoteCastielService
- * @Description: 远程服务
- * @author 猴子搬来的救兵 http://blog.csdn.net/mynameishuangshuai
- */
 public class RemoteCastielService extends Service {
     MyBinder myBinder;
     private PendingIntent pintent;
@@ -68,9 +62,6 @@ public class RemoteCastielService extends Service {
         this.bindService(new Intent(this,LocalCastielService.class), myServiceConnection, Context.BIND_IMPORTANT);
 
         showNotification(RemoteCastielService.this,startId);
-
-        //设置service为前台进程，避免手机休眠时系统自动杀掉该服务
-//        startForeground(startId, notification);
         return START_STICKY;
     }
 
