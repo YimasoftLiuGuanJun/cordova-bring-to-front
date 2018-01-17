@@ -85,8 +85,8 @@
             target-dir="src/in/lucasdup/bringtofront" />
 		
 	<source-file
-            src="src/android/CastielProgressConnection.aidl"
-            target-dir="src/in/lucasdup/bringtofront" />
+            src="src/android/aidl/CastielProgressConnection.aidl"
+            target-dir="src/com/android" />
 		
 	</platform>
 </plugin>
