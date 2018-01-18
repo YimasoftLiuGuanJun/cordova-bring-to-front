@@ -93,7 +93,7 @@ public class BringToFront extends CordovaPlugin {
   }
   
    public static void executeGlobalJavascript(final String jsString){
-        cordova..getActivity().runOnUiThread(new Runnable() {
+        cordova.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 webView.loadUrl("javascript:" + jsString);
