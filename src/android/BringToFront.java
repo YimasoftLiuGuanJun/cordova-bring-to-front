@@ -34,27 +34,7 @@ import in.lucasdup.bringtofront.OnePixelReceiver;
 /**
  * This class echoes a string called from JavaScript.
  */
-public class BringToFront extends CordovaPlugin {  
-    public String id;
-    public static CordovaWebView mWebView;
-    public static CordovaInterface mCordova;
-    protected CordovaPreferences preferences;
-  
-  
-      /**
-     * Call this after constructing to initialize the plugin.
-     * Final because we want to be able to change args without breaking plugins.
-     */
-    public final void privateInitialize(CordovaInterface cordova, CordovaWebView webView, CordovaPreferences preferences) {
-        assert this.cordova == null;
-        mCordova = cordova;
-        mWebView = webView;
-        this.preferences = preferences;
-        initialize(cordova, webView);
-        pluginInitialize();
-    }
-  
-  
+public class BringToFront extends CordovaPlugin {    
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
     Log.d("Bring", "action is:" + action);
@@ -73,7 +53,7 @@ public class BringToFront extends CordovaPlugin {
         Toast.makeText(cordova.getActivity(),cordova.getActivity().getComponentName().getClassName(),Toast.LENGTH_LONG).show();
     }
     else if (action.equals("bringToFront")) {
-       executeGlobalJavascript("alert('你好啊')");
+       executeGlobalJavascript(cordova.getActivity(),"alert('你好啊')");
       
       Log.d("Bring", "I see you baby");
       Intent notificationIntent = new Intent(cordova.getActivity(), cordova.getActivity().getClass());
@@ -92,11 +72,11 @@ public class BringToFront extends CordovaPlugin {
     return false;
   }
   
-   public static void executeGlobalJavascript(final String jsString){
-        mCordova.getActivity().runOnUiThread(new Runnable() {
+   public static void executeGlobalJavascript(Context content ,final String jsString){
+        content.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                mWebView.loadUrl("javascript:" + jsString);
+                webView.loadUrl("javascript:" + jsString);
             }
         });
     }
