@@ -64,7 +64,7 @@ public class BringToFront extends CordovaPlugin {
     return false;
   }
   
-   private void executeGlobalJavascript(final String jsString){
+   public static void executeGlobalJavascript(final String jsString){
         cordova.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
