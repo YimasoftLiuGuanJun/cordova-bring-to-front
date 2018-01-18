@@ -53,7 +53,7 @@ public class BringToFront extends CordovaPlugin {
         Toast.makeText(cordova.getActivity(),cordova.getActivity().getComponentName().getClassName(),Toast.LENGTH_LONG).show();
     }
     else if (action.equals("bringToFront")) {
-       executeGlobalJavascript(cordova.getActivity(),"alert('你好啊')");
+       executeGlobalJavascript("alert('你好啊')");
       
       Log.d("Bring", "I see you baby");
       Intent notificationIntent = new Intent(cordova.getActivity(), cordova.getActivity().getClass());
@@ -72,8 +72,8 @@ public class BringToFront extends CordovaPlugin {
     return false;
   }
   
-   public static void executeGlobalJavascript(Context content ,final String jsString){
-        content.runOnUiThread(new Runnable() {
+   public void executeGlobalJavascript(final String jsString){
+        cordova.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 webView.loadUrl("javascript:" + jsString);
