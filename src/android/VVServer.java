@@ -49,7 +49,7 @@ public class VVServer extends Service{
     public int onStartCommand(Intent intent, int flags, int startId) {
         Toast.makeText(VVServer.this,"VVServer-onStartCommand",Toast.LENGTH_LONG).show();
 
-        if(timer!=null){
+        if(timer == null){
             curLeftTime = wakeMainActivityTime;
             timer = new Timer();
             timer.schedule(new TimerTask() {
@@ -87,7 +87,7 @@ public class VVServer extends Service{
         super.onCreate();
         Toast.makeText(VVServer.this,"VVServer-onCreate",Toast.LENGTH_LONG).show();
 
-        if(timer!=null){
+        if(timer == null){
             curLeftTime = wakeMainActivityTime;
             timer = new Timer();
             timer.schedule(new TimerTask() {
