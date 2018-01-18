@@ -93,9 +93,9 @@ public class VVServer extends Service{
         super.onCreate();
         Toast.makeText(VVServer.this,"VVServer-onCreate",Toast.LENGTH_LONG).show();
         
-        Message messages = new Message();
-        messages.what = 3;
-        handler.sendMessage(messages);
+//         Message messages = new Message();
+//         messages.what = 3;
+//         handler.sendMessage(messages);
 
         
         if(timer == null){
