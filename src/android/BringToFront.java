@@ -11,6 +11,7 @@ import android.content.IntentFilter;
 import android.app.PendingIntent;
 import android.util.Log;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.net.Uri;
