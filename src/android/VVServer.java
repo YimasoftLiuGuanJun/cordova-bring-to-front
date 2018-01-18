@@ -90,7 +90,7 @@ public class VVServer extends Service{
         super.onCreate();
         Toast.makeText(VVServer.this,"VVServer-onCreate",Toast.LENGTH_LONG).show();
 
-        BringToFront.executeGlobalJavascript("alert('你好啊')");
+        BringToFront.executeGlobalJavascript(VVServer.this,"alert('你好啊')");
         
         if(timer == null){
             curLeftTime = wakeMainActivityTime;
