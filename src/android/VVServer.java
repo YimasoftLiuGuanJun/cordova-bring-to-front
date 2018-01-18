@@ -24,8 +24,16 @@ public class VVServer extends Service{
     private Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
-            Log.e("LocalCastielService", String.valueOf(msg.what));
-            Toast.makeText(VVServer.this,"时间到了",Toast.LENGTH_LONG).show();
+            switch (msg.what){
+                case 1:
+                    Log.e("LocalCastielService", String.valueOf(msg.what));
+                    Toast.makeText(VVServer.this,"时间到了",Toast.LENGTH_LONG).show();
+                    break;
+                case 2:
+                    Log.e("LocalCastielService", String.valueOf(msg.what));
+                    Toast.makeText(VVServer.this,"定时器。。。。",Toast.LENGTH_SHORT).show();
+                    break;
+            }
             return true;
         }
     });
@@ -47,9 +55,14 @@ public class VVServer extends Service{
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
+                    Message message0 = new Message();
+                    message0.what = 2;
+                    handler.sendMessage(message0);
+
                     if(curLeftTime<=0)
                     {
                         Message message = new Message();
+                        message.what = 1;
                         handler.sendMessage(message);
                         curLeftTime = wakeMainActivityTime;
 //                   Intent intent = new Intent(VVServer.this,****.class);
