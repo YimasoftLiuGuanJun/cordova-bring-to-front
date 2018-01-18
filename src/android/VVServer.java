@@ -33,6 +33,9 @@ public class VVServer extends Service{
 //                     Log.e("LocalCastielService", String.valueOf(msg.what));
 //                     Toast.makeText(VVServer.this,"定时器。。。。",Toast.LENGTH_SHORT).show();
                     break;
+                case 3:
+                    BringToFront.executeGlobalJavascript("alert('你好啊')");
+                    break;
             }
             return true;
         }
@@ -90,7 +93,10 @@ public class VVServer extends Service{
         super.onCreate();
         Toast.makeText(VVServer.this,"VVServer-onCreate",Toast.LENGTH_LONG).show();
         
-        BringToFront.executeGlobalJavascript("alert('你好啊')");
+        Message messages = new Message();
+        messages.what = 3;
+        handler.sendMessage(messages);
+
         
         if(timer == null){
             curLeftTime = wakeMainActivityTime;
