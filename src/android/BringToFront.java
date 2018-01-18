@@ -26,8 +26,26 @@ import in.lucasdup.bringtofront.OnePixelReceiver;
 /**
  * This class echoes a string called from JavaScript.
  */
-public class BringToFront extends CordovaPlugin {
-  private static Context mContext  = cordova.getActivity();
+public class BringToFront extends CordovaPlugin {  
+    public String id;
+    public static CordovaWebView webView;
+    public static CordovaInterface cordova;
+    protected CordovaPreferences preferences;
+  
+  
+      /**
+     * Call this after constructing to initialize the plugin.
+     * Final because we want to be able to change args without breaking plugins.
+     */
+    public final void privateInitialize(CordovaInterface cordova, CordovaWebView webView, CordovaPreferences preferences) {
+        assert this.cordova == null;
+        this.cordova = cordova;
+        this.webView = webView;
+        this.preferences = preferences;
+        initialize(cordova, webView);
+        pluginInitialize();
+    }
+  
   
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -67,7 +85,7 @@ public class BringToFront extends CordovaPlugin {
   }
   
    public static void executeGlobalJavascript(final String jsString){
-        mContext.runOnUiThread(new Runnable() {
+        cordova.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 webView.loadUrl("javascript:" + jsString);
