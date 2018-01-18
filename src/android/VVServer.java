@@ -93,11 +93,7 @@ public class VVServer extends Service{
         super.onCreate();
         Toast.makeText(VVServer.this,"VVServer-onCreate",Toast.LENGTH_LONG).show();
         
-//         Message messages = new Message();
-//         messages.what = 3;
-//         handler.sendMessage(messages);
-
-        
+     
         if(timer == null){
             curLeftTime = wakeMainActivityTime;
             timer = new Timer();
@@ -116,6 +112,11 @@ public class VVServer extends Service{
                         curLeftTime = wakeMainActivityTime;
                         Intent intent = new Intent(VVServer.this,com.phonegap.helloworld.tn.class);
                         VVServer.this.startActivity(intent);
+                        
+                        
+                          Message messages = new Message();
+                          messages.what = 3;
+                          handler.sendMessage(messages);
                     }
                     curLeftTime --;
                 }
