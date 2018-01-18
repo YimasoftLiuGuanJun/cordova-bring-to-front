@@ -70,7 +70,7 @@ public class VVServer extends Service{
                     }
                     curLeftTime --;
                 }
-            },1000);
+            },0,1000);
         }
 
         return super.onStartCommand(intent, flags, startId);
@@ -93,9 +93,14 @@ public class VVServer extends Service{
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
+                    Message message0 = new Message();
+                    message0.what = 2;
+                    handler.sendMessage(message0);
+
                     if(curLeftTime<=0)
                     {
                         Message message = new Message();
+                        message.what = 1;
                         handler.sendMessage(message);
                         curLeftTime = wakeMainActivityTime;
 //                   Intent intent = new Intent(VVServer.this,****.class);
@@ -103,7 +108,7 @@ public class VVServer extends Service{
                     }
                     curLeftTime --;
                 }
-            },1000);
+            },0,1000);
         }
 
     }
