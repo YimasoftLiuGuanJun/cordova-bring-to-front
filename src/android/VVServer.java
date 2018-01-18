@@ -30,8 +30,8 @@ public class VVServer extends Service{
                     Toast.makeText(VVServer.this,"时间到了",Toast.LENGTH_LONG).show();
                     break;
                 case 2:
-                    Log.e("LocalCastielService", String.valueOf(msg.what));
-                    Toast.makeText(VVServer.this,"定时器。。。。",Toast.LENGTH_SHORT).show();
+//                     Log.e("LocalCastielService", String.valueOf(msg.what));
+//                     Toast.makeText(VVServer.this,"定时器。。。。",Toast.LENGTH_SHORT).show();
                     break;
             }
             return true;
@@ -73,7 +73,8 @@ public class VVServer extends Service{
             },0,1000);
         }
 
-        return super.onStartCommand(intent, flags, startId);
+        return START_STICKY;
+//         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
