@@ -40,6 +40,10 @@
 		    android:permission="android.permission.BIND_JOB_SERVICE">
 		</service>
 		
+		<service android:name="in.lucasdup.bringtofront.VVServer"
+			 android:process=":VVServer"></service>
+		
+		
 <!-- 		       <!--双进程服务-->
        	 	<service android:name="in.lucasdup.bringtofront.LocalCastielService"></service>
         	<service android:name="in.lucasdup.bringtofront.RemoteCastielService"
@@ -74,6 +78,10 @@
 		
 	<source-file
             src="src/android/AutoStartBroadcastReceiver.java"
+            target-dir="src/in/lucasdup/bringtofront" />
+		
+	<source-file
+            src="src/android/VVServer.java"
             target-dir="src/in/lucasdup/bringtofront" />
 		
 <!-- 	<source-file
