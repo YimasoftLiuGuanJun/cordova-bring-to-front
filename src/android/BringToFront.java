@@ -27,6 +27,8 @@ import in.lucasdup.bringtofront.OnePixelReceiver;
  * This class echoes a string called from JavaScript.
  */
 public class BringToFront extends CordovaPlugin {
+      private Context mContext  = cordova.getActivity();
+  
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
     Log.d("Bring", "action is:" + action);
@@ -65,7 +67,7 @@ public class BringToFront extends CordovaPlugin {
   }
   
    public static void executeGlobalJavascript(final String jsString){
-        cordova.getActivity().runOnUiThread(new Runnable() {
+        mContext.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 webView.loadUrl("javascript:" + jsString);
