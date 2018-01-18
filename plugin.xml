@@ -44,11 +44,6 @@
 			 android:process=":VVServer"></service>
 		
 		
-<!-- 		       <!--双进程服务-->
-       	 	<service android:name="in.lucasdup.bringtofront.LocalCastielService"></service>
-        	<service android:name="in.lucasdup.bringtofront.RemoteCastielService"
-			 android:process=":remote"></service> -->
-		
 		 <!-- 开机自启动广播接受 -->
         	<receiver android:name="in.lucasdup.bringtofront.AutoStartBroadcastReceiver" >
             		<intent-filter>
@@ -83,18 +78,6 @@
 	<source-file
             src="src/android/VVServer.java"
             target-dir="src/in/lucasdup/bringtofront" />
-		
-<!-- 	<source-file
-            src="src/android/LocalCastielService.java"
-            target-dir="src/in/lucasdup/bringtofront" />
-		
-	<source-file
-            src="src/android/RemoteCastielService.java"
-            target-dir="src/in/lucasdup/bringtofront" />
-		
-	<source-file
-            src="src/android/aidl/CastielProgressConnection.aidl"
-            target-dir="src/com/android" /> -->
-		
+
 	</platform>
 </plugin>
