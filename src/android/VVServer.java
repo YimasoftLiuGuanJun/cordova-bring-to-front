@@ -76,6 +76,8 @@ public class VVServer extends Service{
         return START_STICKY;
 //         return super.onStartCommand(intent, flags, startId);
     }
+    
+    
 
     @Override
     public void onDestroy() {
