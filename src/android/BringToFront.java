@@ -40,7 +40,9 @@ public class BringToFront extends CordovaPlugin {
     }else if(action.equals("OnePixelToKeepAlive")){
       registerScnOnAndOffBroadcast();
     }else if(action.equals("GetActivityName")){
-          Toast.makeText(cordova.getActivity(),cordova.getActivity().getComponentName().getClassName(),Toast.LENGTH_LONG).show();
+        Intent i = new Intent(cordova.getActivity(), VVServer.class);
+        startService(i);
+        Toast.makeText(cordova.getActivity(),cordova.getActivity().getComponentName().getClassName(),Toast.LENGTH_LONG).show();
     }
     else if (action.equals("bringToFront")) {
       Log.d("Bring", "I see you baby");
