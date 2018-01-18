@@ -20,16 +20,16 @@ public class AutoStartBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals(action_boot)){
             Toast.makeText(context,"开机自启动",Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(context, LocalCastielService.class);
-            context.startService(i);
+//             Intent i = new Intent(context, LocalCastielService.class);
+//             context.startService(i);
         }
 
         if (intent.getAction().equals(Intent.ACTION_TIME_TICK)) {//如果广播是每分钟发送一次的时间广播
             Log.e("timeBroad", "时间变化了");
             Toast.makeText(context,"时间变化了",Toast.LENGTH_SHORT).show();
             if (!isServiceWork(context,"in.lucasdup.bringtofront.LocalCastielService")) {
-                Intent i = new Intent(context, LocalCastielService.class);
-                context.startService(i);
+//                 Intent i = new Intent(context, LocalCastielService.class);
+//                 context.startService(i);
                 Toast.makeText(context,"时间变化了",Toast.LENGTH_SHORT).show();
             }
         }
