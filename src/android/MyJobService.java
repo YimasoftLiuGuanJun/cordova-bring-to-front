@@ -38,8 +38,8 @@ public class MyJobService extends JobService {
 //             Toast.makeText(MyJobService.this,"MyJobService》》》》》》啥都没干", Toast.LENGTH_SHORT).show();
             
             //启动一个服务
-            if(!isServiceWork(getApplicationContext(),"in.lucasdup.bringtofront.LocalCastielService")){
-               Intent i = new Intent(getApplicationContext(), LocalCastielService.class);
+            if(!isServiceWork(getApplicationContext(),"in.lucasdup.bringtofront.VVServer")){
+               Intent i = new Intent(getApplicationContext(), VVServer.class);
                startService(i);
                 Log.e("MyJobService", "开始启动服务");
             }else {
