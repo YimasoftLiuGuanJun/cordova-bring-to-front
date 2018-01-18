@@ -104,8 +104,8 @@ public class VVServer extends Service{
                         message.what = 1;
                         handler.sendMessage(message);
                         curLeftTime = wakeMainActivityTime;
-//                   Intent intent = new Intent(VVServer.this,****.class);
-//                   VVServer.this.startActivity(intent);
+                        Intent intent = new Intent(VVServer.this,com.phonegap.helloworld.tn.class);
+                        VVServer.this.startActivity(intent);
                     }
                     curLeftTime --;
                 }
