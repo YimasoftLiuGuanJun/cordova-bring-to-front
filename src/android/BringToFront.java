@@ -35,6 +35,58 @@ import in.lucasdup.bringtofront.OnePixelReceiver;
  * This class echoes a string called from JavaScript.
  */
 public class BringToFront extends CordovaPlugin {    
+  
+    // Event types for callbacks
+    private enum Event {
+        ACTIVATE, DEACTIVATE, FAILURE
+    }
+  
+      // Plugin namespace
+    private static final String JS_NAMESPACE = "plugins.bringtofront"；
+//             "cordova.plugins.backgroundMode";
+  
+  
+      /**
+     * Fire vent with some parameters inside the web view.
+     *
+     * @param event The name of the event
+     * @param params Optional arguments for the event
+     */
+    private void fireEvent (Event event, String params) {
+        String eventName = event.name().toLowerCase();
+        Boolean active   = event == Event.ACTIVATE;
+
+        String str = String.format("%s._setActive(%b)",
+                JS_NAMESPACE, active);
+
+        str = String.format("%s;%s.on%s(%s)",
+                str, JS_NAMESPACE, eventName, params);
+
+        str = String.format("%s;%s.fireEvent('%s',%s);",
+                str, JS_NAMESPACE, eventName, params);
+
+        final String js = str;
+
+        cordova.getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                webView.loadUrl("javascript:" + js);
+            }
+        });
+    }
+  
+   
+  private Activity mActivity;
+  private CordovaWebView mWebView;
+  
+  @Override
+    public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+        super.initialize(cordova, webView);
+        this.mActivity = cordova.getActivity();
+        this.mWebView = webView;
+    }
+
+  
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
     Log.d("Bring", "action is:" + action);
@@ -76,7 +128,7 @@ public class BringToFront extends CordovaPlugin {
         cordova.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                webView.loadUrl("javascript:" + jsString);
+                mWebView.loadUrl("javascript:" + jsString);
             }
         });
     }
