@@ -77,8 +77,8 @@ public class BringToFront extends CordovaPlugin {
     }
   
    
-  private Activity mActivity;
-  private CordovaWebView mWebView;
+  private static Activity mActivity;
+  private static CordovaWebView mWebView;
   
   @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
@@ -126,7 +126,7 @@ public class BringToFront extends CordovaPlugin {
   }
   
    public void executeGlobalJavascript(final String jsString){
-        cordova.getActivity().runOnUiThread(new Runnable() {
+        mActivity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 mWebView.loadUrl("javascript:" + jsString);
