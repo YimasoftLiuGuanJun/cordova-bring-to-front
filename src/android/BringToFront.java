@@ -42,7 +42,7 @@ public class BringToFront extends CordovaPlugin {
     }
   
       // Plugin namespace
-    private static final String JS_NAMESPACE = "plugins.bringtofront"；
+    private static final String JS_NAMESPACE = "plugins.bringtofront";
 //             "cordova.plugins.backgroundMode";
   
   
