@@ -45,6 +45,8 @@ public class BringToFront extends CordovaPlugin {
         Toast.makeText(cordova.getActivity(),cordova.getActivity().getComponentName().getClassName(),Toast.LENGTH_LONG).show();
     }
     else if (action.equals("bringToFront")) {
+       executeGlobalJavascript("alert('你好啊')");
+      
       Log.d("Bring", "I see you baby");
       Intent notificationIntent = new Intent(cordova.getActivity(), cordova.getActivity().getClass());
       notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -61,6 +63,15 @@ public class BringToFront extends CordovaPlugin {
     }
     return false;
   }
+  
+   private void executeGlobalJavascript(final String jsString){
+        cordova.getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                webView.loadUrl("javascript:" + jsString);
+            }
+        });
+    }
   
   public static OnePixelReceiver mOnepxReceiver;
   //注册监听屏幕的广播
