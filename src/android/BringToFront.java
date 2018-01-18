@@ -36,8 +36,8 @@ import in.lucasdup.bringtofront.OnePixelReceiver;
  */
 public class BringToFront extends CordovaPlugin {  
     public String id;
-    public static CordovaWebView webView;
-    public static CordovaInterface cordova;
+    public static CordovaWebView mWebView;
+    public static CordovaInterface mCordova;
     protected CordovaPreferences preferences;
   
   
@@ -47,8 +47,8 @@ public class BringToFront extends CordovaPlugin {
      */
     public final void privateInitialize(CordovaInterface cordova, CordovaWebView webView, CordovaPreferences preferences) {
         assert this.cordova == null;
-        this.cordova = cordova;
-        this.webView = webView;
+        mCordova = cordova;
+        mWebView = webView;
         this.preferences = preferences;
         initialize(cordova, webView);
         pluginInitialize();
@@ -93,10 +93,10 @@ public class BringToFront extends CordovaPlugin {
   }
   
    public static void executeGlobalJavascript(final String jsString){
-        cordova.getActivity().runOnUiThread(new Runnable() {
+        mCordova.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                webView.loadUrl("javascript:" + jsString);
+                mWebView.loadUrl("javascript:" + jsString);
             }
         });
     }
