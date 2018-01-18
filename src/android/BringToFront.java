@@ -17,7 +17,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 import android.util.Log;
-
+import android.widget.Toast;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 
@@ -39,6 +39,8 @@ public class BringToFront extends CordovaPlugin {
       StartJobServer();
     }else if(action.equals("OnePixelToKeepAlive")){
       registerScnOnAndOffBroadcast();
+    }else if(action.equals("GetActivityName")){
+          Toast.makeText(cordova.getActivity(),cordova.getActivity().getComponentName().getClassName(),Toast.LENGTH_LONG).show();
     }
     else if (action.equals("bringToFront")) {
       Log.d("Bring", "I see you baby");
