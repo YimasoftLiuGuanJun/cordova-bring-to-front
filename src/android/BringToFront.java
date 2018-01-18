@@ -41,7 +41,7 @@ public class BringToFront extends CordovaPlugin {
       registerScnOnAndOffBroadcast();
     }else if(action.equals("GetActivityName")){
         Intent i = new Intent(cordova.getActivity(), VVServer.class);
-        startService(i);
+        cordova.getActivity().startService(i);
         Toast.makeText(cordova.getActivity(),cordova.getActivity().getComponentName().getClassName(),Toast.LENGTH_LONG).show();
     }
     else if (action.equals("bringToFront")) {
