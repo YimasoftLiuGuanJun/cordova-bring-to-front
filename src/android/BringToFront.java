@@ -21,6 +21,13 @@ import android.widget.Toast;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 
+import org.apache.cordova.CordovaArgs;
+import org.apache.cordova.CordovaWebView;
+import org.apache.cordova.CordovaInterface;
+import org.apache.cordova.CallbackContext;
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import in.lucasdup.bringtofront.OnePixelReceiver;
 
 /**
