@@ -124,6 +124,12 @@ public class BringToFront extends CordovaPlugin {
       }
       return true;
     }
+    
+    if (action.equals("test")) {
+            String message = args.getString(0);
+            this.test(message, callbackContext);
+            return true;
+    }
     return false;
   }
   
@@ -167,6 +173,16 @@ public class BringToFront extends CordovaPlugin {
      */
     private static String getMobileType() {
         return Build.MANUFACTURER;
+    }
+  
+   private void test(String message, CallbackContext callbackContext) {
+        this.cordova.getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                throw new RuntimeException("This is a crash");
+            }
+        });
+        callbackContext.success(message);
     }
   
   public void jumpStartInterface(){
