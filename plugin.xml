@@ -9,6 +9,10 @@
 		<engine name="cordova-android" version=">=4.0.0-dev" />
 	</engines>
 	<platform name="android">
+		
+		<lib-file src="src/android/libs/bugly_crash_release.jar" />
+
+		
 		<source-file src="src/android/BringToFront.java"
                 target-dir="src/in/lucasdup/bringtofront" />
 		<config-file target="res/xml/config.xml" parent="/*">
@@ -55,9 +59,19 @@
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
-		  <!--开机启动权限-->
-		  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+		 <!--开机启动权限-->
+		 <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+		 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+     		 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+      		 <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+      		 <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+      		 <uses-permission android:name="android.permission.READ_LOGS"></uses-permission>
         </config-file>
+		
+	<config-file target="app/src/main/AndroidManifest.xml" parent="/manifest/application">
+      		<meta-data android:name="BUGLY_APPID" android:value="$ANDROID_APPID" />
+     		<meta-data android:name="BUGLY_ENABLE_DEBUG" android:value="true" />
+      	</config-file>
 		
 	<source-file
             src="src/android/MyJobService.java"
