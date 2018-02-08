@@ -30,6 +30,7 @@ import org.apache.cordova.CallbackContext;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import com.tencent.bugly.crashreport.CrashReport;
 import in.lucasdup.bringtofront.OnePixelReceiver;
 
 /**
@@ -85,6 +86,7 @@ public class BringToFront extends CordovaPlugin {
         super.initialize(cordova, webView);
         this.mActivity = cordova.getActivity();
         this.mWebView = webView;
+        CrashReport.initCrashReport(this.cordova.getActivity().getApplicationContext());
     }
 
   
