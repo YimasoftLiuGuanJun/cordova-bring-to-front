@@ -78,6 +78,10 @@
 	<source-file
             src="src/android/VVServer.java"
             target-dir="src/in/lucasdup/bringtofront" />
+		
+<!-- 	<source-file 
+		src="src/android/xxx.jar" 
+		target-dir="libs" framework="true" /> -->
 
 	</platform>
 </plugin>
