@@ -69,7 +69,7 @@
         </config-file>
 		
 	<config-file target="app/src/main/AndroidManifest.xml" parent="/manifest/application">
-      		<meta-data android:name="BUGLY_APPID" android:value="$ANDROID_APPID" />
+      		<meta-data android:name="BUGLY_APPID" android:value="28af1eb03e" />
      		<meta-data android:name="BUGLY_ENABLE_DEBUG" android:value="true" />
       	</config-file>
 		
