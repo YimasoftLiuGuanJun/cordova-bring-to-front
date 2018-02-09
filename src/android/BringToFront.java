@@ -84,10 +84,11 @@ public class BringToFront extends CordovaPlugin {
   @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
+        Toast.makeText(cordova.getActivity(),"初始化 initialize",Toast.LENGTH_LONG).show();
         this.mActivity = cordova.getActivity();
         this.mWebView = webView;
         CrashReport.initCrashReport(this.cordova.getActivity().getApplicationContext());
-        Toast.makeText(cordova.getActivity(),"初始化",Toast.LENGTH_LONG).show();
+        
     }
 
   
@@ -124,9 +125,7 @@ public class BringToFront extends CordovaPlugin {
         e.printStackTrace();
       }
       return true;
-    }
-    
-    if (action.equals("test")) {
+    }else if (action.equals("test")) {
             Toast.makeText(cordova.getActivity(),"测试bugly",Toast.LENGTH_LONG).show();
             String message = "测试bugly";
             this.test(message, callbackContext);
